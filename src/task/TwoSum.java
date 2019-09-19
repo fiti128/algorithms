@@ -2,7 +2,6 @@ package task;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 /**
  * @author Sergey Yanushevskiy
@@ -24,7 +23,7 @@ public class TwoSum {
         Arrays.stream(result).forEach(System.out::println);
     }
     public int[] twoSumHash(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i=0; i < nums.length; i++) {
             map.put(nums[i], i);
         }
@@ -40,7 +39,7 @@ public class TwoSum {
         return null;
     }
     public int[] twoSumHashOneGo(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i=0; i < nums.length; i++) {
             int requiredNumber = target - nums[i];
             if (map.get(requiredNumber) != null) {
