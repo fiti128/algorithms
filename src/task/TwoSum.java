@@ -1,6 +1,7 @@
 package task;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.stream.Stream;
 
 /**
@@ -23,16 +24,32 @@ public class TwoSum {
         Arrays.stream(result).forEach(System.out::println);
     }
     public int[] twoSumHash(int[] nums, int target) {
-        int[] returnArray = new int[2];
+        HashMap<Integer, Integer> map = new HashMap();
         for (int i=0; i < nums.length; i++) {
-            for (int j=1; j < nums.length; j++) {
-                if (i !=j && (nums[i] + nums[j]) == target) {
-                    returnArray[0] = i;
-                    returnArray[1] = j;
-                    return returnArray;
+            map.put(nums[i], i);
+        }
+        for (int i=0; i < nums.length; i++) {
+            int requiredNumber = target - nums[i];
+            if (map.get(requiredNumber) != null) {
+                int secondIndex = map.get(requiredNumber);
+                if (secondIndex != i) {
+                    return new int[] {i, secondIndex};
                 }
             }
         }
         return null;
+    }
+    public int[] twoSumHashOneGo(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap();
+        for (int i=0; i < nums.length; i++) {
+            int requiredNumber = target - nums[i];
+            if (map.get(requiredNumber) != null) {
+                int firstIndex = map.get(requiredNumber);
+                return new int[] {firstIndex, i};
+            }
+            map.put(nums[i], i);
+        }
+
+        throw new IllegalArgumentException("No result found");
     }
 }
