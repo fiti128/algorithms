@@ -1,4 +1,4 @@
-package task;
+package task.easy;
 
 import java.util.Arrays;
 import java.util.HashMap;
