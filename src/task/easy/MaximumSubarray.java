@@ -16,9 +16,8 @@ public class MaximumSubarray {
             largestSum = tempSum > largestSum
                     ? tempSum
                     : largestSum;
-
-
         }
         return largestSum;
     }
+
 }
